@@ -1,0 +1,57 @@
+@startuml 
+
+package Model{
+    class Usuario{
+        - intUsuario: int
+        - nome: string 
+        - email: string 
+        - senha: string
+    }
+    class Conversa{
+        -idConversa: int
+        -idUsuario: int
+        -dataInicio: int
+        -dataFim: datetime
+    }
+    class Mensagem{
+        - idMensagem: int
+        -idConversa: int
+        - texto:string
+        - dataHora:datetime
+    }
+    class Log{
+        -idLog: int
+        -idUsuario: int
+        -idConversa: int
+        -acao: string
+        -dataHora: datetime
+    }
+}
+
+package View{
+    class LogiView{
+        + exibirLogs()
+    }
+    class ConversaView{
+        +exibirChat()
+        +enviarMensagem()
+    }
+    class LoginView{
+        +exibirLogin()
+        +receberCredenciais()
+    }
+}
+
+package Controller{
+    class UsuarioController{
+        +criarConta()
+        +login()
+        +logout()
+        +alterarSenha()
+    }
+    class ConversaController{
+        +iniciarConversa()
+        +enviarMensagem()
+        +finalizarConversa()
+    }
+}

@@ -1,0 +1,34 @@
+@startuml 
+entity "Usuario"{
+    int idUsuario
+    string nome 
+    string email
+    string senha 
+}
+
+entity "Conversa"{
+    int idConversa
+    int idUsuario
+    datetime dataInicio
+    datetime dateFim
+}
+
+entity "Mensagem" {
+    int idMensagem
+    int idConversa
+    string texto 
+    datetime dataHora
+    }
+
+entity "Log"{
+    int idLog
+    int idUsuario
+    int idConversa
+    string acao
+    datetime dataHora
+}
+
+Usuario ||--o{ Conversa : "possui"
+Conversa ||--o{Mensagem : "contem"
+Usuario ||--o{ Log : "gera"
+@enduml 
